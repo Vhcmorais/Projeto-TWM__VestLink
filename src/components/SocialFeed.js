@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Card, Spinner, Alert } from 'react-bootstrap';
-import { FaHeart, FaRegHeart, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { FaHeart, FaRegHeart, FaThumbsUp, FaThumbsDown } from 'react-icons/fa'; // Re-adicionado imports
 import './SocialFeed.css'; // Importar o CSS do SocialFeed
 
-const SocialFeed = () => {
+const SocialFeed = ({ userId }) => { // Receber userId como prop
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedCoverImage, setSelectedCoverImage] = useState(null); // Novo estado para a imagem de capa
+  const [selectedCoverImage, setSelectedCoverImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const userId = 1; // Placeholder - replace with actual user ID (e.g., from context or prop)
+  // const userId = 1; // Removido o placeholder - agora vem via prop
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (userId) { // Apenas busca posts se o userId estiver disponível
+      fetchPosts();
+    }
+  }, [userId]); // Dependência do userId
 
   const fetchPosts = async () => {
     setLoading(true);
@@ -48,12 +50,15 @@ const SocialFeed = () => {
       setError('Título e material de estudo são obrigatórios.');
       return;
     }
+    if (!userId) {
+      setError('Usuário não autenticado. Faça login novamente.');
+      return;
+    }
 
     setLoading(true);
     setError(null);
 
     try {
-      // 1. Upload do material e imagem de capa (se houver)
       const formData = new FormData();
       formData.append('material', selectedFile);
       if (selectedCoverImage) {
@@ -71,10 +76,9 @@ const SocialFeed = () => {
       }
 
       const uploadData = await uploadResponse.json();
-      const filePath = uploadData.materialPath; // Caminho do material retornado pelo backend
-      const coverImagePath = uploadData.coverImagePath || null; // Caminho da imagem de capa (opcional)
+      const filePath = uploadData.materialPath;
+      const coverImagePath = uploadData.coverImagePath || null;
 
-      // 2. Criar o post com os caminhos dos arquivos
       const postResponse = await fetch('http://localhost:3001/posts', {
         method: 'POST',
         headers: {
@@ -91,10 +95,10 @@ const SocialFeed = () => {
       setTitle('');
       setDescription('');
       setSelectedFile(null);
-      setSelectedCoverImage(null); // Limpa a imagem de capa
-      document.getElementById('materialFileInput').value = ''; // Limpa o input de arquivo do material
+      setSelectedCoverImage(null);
+      document.getElementById('materialFileInput').value = '';
       if (document.getElementById('coverImageInput')) {
-        document.getElementById('coverImageInput').value = ''; // Limpa o input de arquivo da capa
+        document.getElementById('coverImageInput').value = '';
       }
       fetchPosts();
 
@@ -106,6 +110,10 @@ const SocialFeed = () => {
   };
 
   const handleFavorite = async (postId) => {
+    if (!userId) {
+      alert('Você precisa estar logado para favoritar um post.');
+      return;
+    }
     try {
       const response = await fetch(`http://localhost:3001/posts/${postId}/favorite`, {
         method: 'POST',
@@ -126,6 +134,10 @@ const SocialFeed = () => {
   };
 
   const handleRate = async (postId, type) => {
+    if (!userId) {
+      alert('Você precisa estar logado para avaliar um post.');
+      return;
+    }
     try {
       const response = await fetch(`http://localhost:3001/posts/${postId}/rate`, {
         method: 'POST',
@@ -146,6 +158,17 @@ const SocialFeed = () => {
   };
 
   const handleDeletePost = async (postId) => {
+    if (!userId) {
+      alert('Você precisa estar logado para remover um post.');
+      return;
+    }
+    // Adicionar verificação para garantir que apenas o autor pode deletar
+    const postToDelete = posts.find(p => p.id === postId);
+    if (postToDelete && postToDelete.userId !== userId) {
+      alert('Você não tem permissão para remover este post.');
+      return;
+    }
+
     if (window.confirm('Tem certeza que deseja remover este post?')) {
       try {
         const response = await fetch(`http://localhost:3001/posts/${postId}`, {
@@ -236,15 +259,19 @@ const SocialFeed = () => {
             <Card.Img variant="top" src={`http://localhost:3001${post.coverImagePath}`} alt="Cover" className="post-cover-image" />
           )}
           <Card.Body>
+            {/* <span className="card-category-tag">Física</span> Tag de categoria */}
             <Card.Title>{post.title}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              Por: {post.userName || 'Desconhecido'} em {new Date(post.createdAt).toLocaleDateString()}
-            </Card.Subtitle>
-            {post.description && <Card.Text>{post.description}</Card.Text>}
-            <div className="d-flex justify-content-between align-items-center mt-2">
+            {post.description && <Card.Text className="card-description">{post.description}</Card.Text>}
+            <p className="post-author">Por: {post.userName}</p> {/* Adicionado o nome do autor */}
+            <div className="d-flex justify-content-center mt-3">
+              <Button variant="primary" href={`http://localhost:3001${post.filePath}`} target="_blank" rel="noopener noreferrer" className="w-100 card-view-material-btn">
+                Ver material
+              </Button>
+            </div>
+            <div className="d-flex justify-content-between align-items-center mt-3 post-interaction-buttons">
               <div>
                 <Button variant="outline-danger" size="sm" className="me-2" onClick={() => handleFavorite(post.id)}>
-                  {/* Substituir por um ícone de coração preenchido se o post for favoritado pelo usuário atual */}
+                  {/* Futuramente, este ícone deve mudar com base se o usuário favoritou ou não */}
                   <FaRegHeart /> Favoritar
                 </Button>
                 <Button variant="outline-success" size="sm" className="me-1" onClick={() => handleRate(post.id, 1)}>
@@ -254,17 +281,13 @@ const SocialFeed = () => {
                   <FaThumbsDown /> {post.negativeRatings || 0}
                 </Button>
               </div>
-              <div>
-                {/* Apenas o usuário que criou o post pode deletá-lo */}
-                {post.userId === userId && (
-                  <Button variant="danger" size="sm" className="ms-2" onClick={() => handleDeletePost(post.id)}>
+              {post.userId === userId && (
+                <div>
+                  <Button variant="danger" size="sm" onClick={() => handleDeletePost(post.id)}>
                     Remover Post
                   </Button>
-                )}
-                <Button variant="info" href={`http://localhost:3001${post.filePath}`} target="_blank" rel="noopener noreferrer" className="ms-2">
-                  Ver Material
-                </Button>
-              </div>
+                </div>
+              )}
             </div>
           </Card.Body>
         </Card>

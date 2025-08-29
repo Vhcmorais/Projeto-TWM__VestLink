@@ -25,7 +25,10 @@
   border-radius: 12px;
   box-shadow: 0 4px 15px var(--shadow-light);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  overflow: hidden; /* Garante que a imagem de capa não vaze */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Garante que os cards na grade tenham altura igual */
 }
 
 .social-feed-card:hover {
@@ -34,22 +37,106 @@
 }
 
 .social-feed-card .card-img-top {
-  height: 200px; /* Altura fixa para a imagem de capa */
-  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  height: 180px; /* Altura fixa para a imagem de capa */
+  object-fit: cover;
   width: 100%;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
 .social-feed-card .card-body {
-  padding: 25px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.social-feed-card .card-category-tag {
+  display: inline-block;
+  background-color: #e0f7fa; /* Um azul claro para a tag */
+  color: #007bb0; /* Azul escuro para o texto da tag */
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .social-feed-card .card-title {
   color: var(--dark-text);
   font-weight: 700;
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.social-feed-card .card-description {
+  color: var(--medium-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.social-feed-card .card-view-material-btn {
+  background-color: #e0f7fa;
+  border-color: #e0f7fa;
+  color: #007bb0;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.social-feed-card .card-view-material-btn:hover {
+  background-color: #c8e8f2;
+  border-color: #c8e8f2;
+  transform: translateY(-2px);
+}
+
+.social-feed-card .post-interaction-buttons {
+  margin-top: 15px; /* Espaço entre o botão "Ver material" e os botões de interação */
+}
+
+.social-feed-card .post-interaction-buttons .btn-outline-danger,
+.social-feed-card .post-interaction-buttons .btn-outline-success {
+  border-radius: 25px;
+  font-size: 0.85rem;
+  padding: 6px 15px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-flex; /* Garante que os ícones e texto fiquem alinhados */
+  align-items: center;
+  gap: 5px; /* Espaço entre ícone e texto */
+}
+
+.social-feed-card .post-interaction-buttons .btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.social-feed-card .post-interaction-buttons .btn-outline-success {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.social-feed-card .post-interaction-buttons .btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.social-feed-card .post-interaction-buttons .btn-outline-success:hover {
+  background-color: #28a745;
+  color: white;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+/* Remover estilos antigos de botões de avaliação/favorito se não usados */
+.social-feed-card .btn-outline-danger,
+.social-feed-card .btn-outline-success {
+  display: none; 
 }
 
 .social-feed-card .card-subtitle {
@@ -76,37 +163,6 @@
   background-color: darken(var(--accent-color), 10%);
   border-color: darken(var(--accent-color), 10%);
   transform: translateY(-2px);
-}
-
-.social-feed-card .btn-outline-danger,
-.social-feed-card .btn-outline-success {
-  border-radius: 25px;
-  font-size: 0.85rem;
-  padding: 6px 15px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.social-feed-card .btn-outline-danger {
-  color: #dc3545;
-  border-color: #dc3545;
-}
-
-.social-feed-card .btn-outline-success {
-  color: #28a745;
-  border-color: #28a745;
-}
-
-.social-feed-card .btn-outline-danger:hover {
-  background-color: #dc3545;
-  color: white;
-  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
-}
-
-.social-feed-card .btn-outline-success:hover {
-  background-color: #28a745;
-  color: white;
-  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
 }
 
 .social-feed-card .d-flex .btn.ms-2.btn-danger {
@@ -172,4 +228,12 @@
 
 .post-controls .btn {
   flex-shrink: 0;
+}
+
+/* Estilos para o nome do autor */
+.post-author {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 10px;
+  text-align: right;
 }
