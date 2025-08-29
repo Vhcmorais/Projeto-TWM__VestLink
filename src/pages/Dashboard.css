@@ -1,0 +1,55 @@
+.dashboard-container {
+  background-color: #f0f2f5; /* Fundo suave, como definido em index.css */
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box; /* Garante que padding não adicione largura extra */
+}
+
+.dashboard-header {
+  margin-bottom: 40px;
+  text-align: center; /* Centraliza o cabeçalho do dashboard */
+}
+
+.dashboard-header h1 {
+  color: var(--primary-color);
+  font-weight: 800;
+  margin-bottom: 10px;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+}
+
+.dashboard-header p {
+  color: var(--medium-text);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto; /* Centraliza o parágrafo */
+}
+
+.nav-tabs {
+  border-bottom: 2px solid var(--border-color);
+}
+
+.nav-tabs .nav-link {
+  color: var(--light-text); /* Cor padrão para links da aba */
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  padding: 12px 20px;
+  font-weight: 500;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--secondary-color);
+  border-color: rgba(142, 45, 226, 0.3); /* Borda mais suave no hover */
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  font-weight: 700;
+  background-color: transparent;
+}
+
+.tab-content {
+  padding: 30px 0;
+}

@@ -1,0 +1,139 @@
+.login-left {
+  background: linear-gradient(rgba(106, 5, 114, 0.7), rgba(142, 45, 226, 0.8)),
+    url("https://images.unsplash.com/photo-1523240795612-9a054b0db644")
+    no-repeat center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.login-logo {
+  position: static;
+  top: auto;
+  left: auto;
+  width: 180px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.login-quote {
+  position: static;
+  bottom: auto;
+  left: auto;
+  max-width: 500px;
+  text-align: left;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: white; /* Garante que a citação seja visível */
+}
+
+.login-quote p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.login-quote footer {
+  font-size: 1rem;
+  opacity: 0.9;
+  color: #f0f0f0; /* Cor mais clara para o footer da citação */
+}
+
+.login-right {
+  background-color: var(--light-bg); /* Usando a nova variável de fundo claro */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-right .card {
+  width: 90%;
+  max-width: 450px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow-medium); /* Sombra mais proeminente */
+}
+
+.login-right h2 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.login-right p.text-muted {
+  color: var(--medium-text) !important;
+  font-size: 0.95rem;
+}
+
+.login-right .form-label {
+  font-weight: 500;
+  color: var(--dark-text);
+}
+
+.login-right .form-control {
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+}
+
+.login-right .form-control:focus {
+  border-color: var(--secondary-color); /* Borda em cor secundária no foco */
+  box-shadow: 0 0 0 0.25rem rgba(142, 45, 226, 0.25); /* Sombra baseada na cor secundária */
+}
+
+.login-right .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-right .btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.login-right a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.login-right a:hover {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-left {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .login-logo {
+    width: 120px;
+    margin-bottom: 15px;
+  }
+
+  .login-quote {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .login-right .card {
+    width: 95%;
+    padding: 20px;
+  }
+}
