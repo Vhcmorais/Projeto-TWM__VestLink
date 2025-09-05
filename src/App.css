@@ -1,18 +1,24 @@
+/* APP'S STYLE */
+
+/* Definitions - aligning text: centered */
 .App {
   text-align: center;
 }
 
+/* Definitions - app's logo */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/* Definitions - responsive style */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Definitions - app's header */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,6 +30,7 @@
   color: white;
 }
 
+/* Definitions - app's url links */
 .App-link {
   color: #61dafb;
 }
