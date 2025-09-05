@@ -259,3 +259,17 @@ Aqui estão algumas telas do projeto **VestLink**:
 **Perfil do Usuário**
 ![Página de Perfil](./demo/imagens/tela_perfil.png)
 
+---
+
+## 🙏 Agradecimentos
+
+Gostaria de agradecer aos meus colegas que contribuíram para este projeto!  
+Seus esforços, ideias e dedicação tornaram este projeto possível.  
+
+### Contribuidores
+- [Vitor Henrique](https://github.com/Vhcmorais)  
+- [Adilson José](https://github.com/OutroContribuidor)  
+- [Bianca Marques](https://github.com/MaisUm)
+- [Gabriel Alves](https://github.com/Maisum)
+
+![Imagem de agradecimento](./demo/imagens/foto_readme.jpeg)
