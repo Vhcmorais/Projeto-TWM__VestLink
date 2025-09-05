@@ -1,3 +1,6 @@
+/* STYLING THE FAVORITES TAB - HOME */
+
+/* Component Container Definitions */
 .favorited-posts-container {
   padding: 20px;
   background-color: var(--light-bg);
@@ -5,6 +8,7 @@
   box-shadow: 0 5px 20px var(--shadow-light);
 }
 
+/* Text inside the container definitions */
 .favorited-posts-container h3 {
   color: var(--primary-color);
   font-weight: 700;
@@ -13,6 +17,7 @@
   font-size: 2rem;
 }
 
+/* Card definitions */
 .favorited-post-card {
   border-radius: 12px;
   box-shadow: 0 4px 15px var(--shadow-light);
@@ -20,14 +25,16 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Garante que os cards na grade tenham altura igual */
+  height: 100%;
 }
 
+/* Card animation definitions */
 .favorited-post-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px var(--shadow-medium);
 }
 
+/* Card header-image definitions */
 .favorited-post-card .card-img-top {
   height: 180px;
   object-fit: cover;
@@ -36,6 +43,7 @@
   border-top-right-radius: 12px;
 }
 
+/* Card body definitions */
 .favorited-post-card .card-body {
   padding: 20px;
   display: flex;
@@ -44,10 +52,11 @@
   flex-grow: 1;
 }
 
+/* Category of the card definitions */
 .favorited-post-card .card-category-tag {
   display: inline-block;
-  background-color: #e0f7fa; /* Um azul claro para a tag */
-  color: #007bb0; /* Azul escuro para o texto da tag */
+  background-color: #e0f7fa;
+  color: #007bb0;
   padding: 4px 10px;
   border-radius: 5px;
   font-size: 0.75rem;
@@ -55,6 +64,7 @@
   margin-bottom: 10px;
 }
 
+/* Title of the card definitions */
 .favorited-post-card .card-title {
   color: var(--dark-text);
   font-weight: 700;
@@ -62,6 +72,7 @@
   margin-bottom: 5px;
 }
 
+/* Description of the card definitions */
 .favorited-post-card .card-description {
   color: var(--medium-text);
   font-size: 0.95rem;
@@ -70,6 +81,7 @@
   flex-grow: 1;
 }
 
+/* Card view (contents material) definitions */
 .favorited-post-card .card-view-material-btn {
   background-color: #e0f7fa;
   border-color: #e0f7fa;
@@ -81,16 +93,19 @@
   transition: all 0.3s ease;
 }
 
+/* Card view (content materials) *animation* definitions */
 .favorited-post-card .card-view-material-btn:hover {
   background-color: #c8e8f2;
   border-color: #c8e8f2;
   transform: translateY(-2px);
 }
 
+/* Interactions definitions */
 .favorited-post-card .post-interaction-buttons {
-  margin-top: 15px; /* Espaço entre o botão "Ver material" e os botões de interação */
+  margin-top: 15px;
 }
 
+/* Interactions with outlines button definitions */
 .favorited-post-card .post-interaction-buttons .btn-outline-danger,
 .favorited-post-card .post-interaction-buttons .btn-outline-success {
   border-radius: 25px;
@@ -103,29 +118,33 @@
   gap: 5px;
 }
 
+/* Button 'dislike' definitions inside the card */ 
 .favorited-post-card .post-interaction-buttons .btn-outline-danger {
   color: #dc3545;
   border-color: #dc3545;
 }
 
+/* Button 'like' definitions inside the card */
 .favorited-post-card .post-interaction-buttons .btn-outline-success {
   color: #28a745;
   border-color: #28a745;
 }
 
+/* Button 'dislike' when the cursor are above the button - interaction */
 .favorited-post-card .post-interaction-buttons .btn-outline-danger:hover {
   background-color: #dc3545;
   color: white;
   box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
 }
 
+/* Button 'like' when the cursor are above the button - interaction */
 .favorited-post-card .post-interaction-buttons .btn-outline-success:hover {
   background-color: #28a745;
   color: white;
   box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
 }
 
-/* Estilos para o nome do autor */
+/* Author's name style definitions */
 .post-author {
   font-size: 0.9em;
   color: #6c757d;

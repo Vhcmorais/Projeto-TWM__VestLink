@@ -15,8 +15,9 @@
   position: static;
   top: auto;
   left: auto;
-  width: 180px;
-  height: auto;
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
   margin-bottom: 20px;
 }
 

@@ -1,5 +1,6 @@
-/* vestlink/src/components/Profile.css */
+/* STYLING PROFILE COMPONENTS - PROFILE TAB */
 
+/* Definitions - container inside profile */
 .profile-container {
   padding: 30px;
   background-color: #fff;
@@ -7,6 +8,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Definitions - user's picture container inside profile */
 .profile-picture-container {
   position: relative;
   width: 150px;
@@ -14,6 +16,7 @@
   margin: 0 auto 20px auto;
 }
 
+/* Definitions - user's picture inside profile */
 .profile-picture {
   width: 100%;
   height: 100%;
@@ -21,73 +24,85 @@
   border: 4px solid var(--primary-color);
 }
 
+/* Definitions - username inside profile */
 .profile-name {
   color: var(--primary-color);
   font-weight: 700;
   margin-bottom: 5px;
 }
 
+/* Definitions - user's email inside profile */
 .profile-email {
   color: #6c757d;
   font-size: 1.1em;
   margin-bottom: 20px;
 }
 
+/* Definitions - user's biography */
 .profile-bio-text {
   color: #343a40;
   line-height: 1.6;
   margin-bottom: 15px;
-  min-height: 80px; /* Garante que o texto tenha uma altura mínima */
+  min-height: 80px;
   border: 1px solid #e9ecef;
   padding: 10px;
   border-radius: 5px;
   background-color: #f8f9fa;
 }
 
+/* Definitions - label component inside the profile tab */
 .form-label {
   font-weight: 500;
   color: var(--secondary-color);
 }
 
+/* Definitions - Picture upload button inside profile */
 .btn-primary {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
+/* Definitions - Upload button animation inside profile */
 .btn-primary:hover {
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
+/* Definitions - Edit Bio button inside profile */
 .btn-outline-secondary {
   color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
+/* Definitions - Edit bio button animation inside profile */
 .btn-outline-secondary:hover {
   background-color: var(--secondary-color);
   color: #fff;
 }
 
+/* Definitions - Text Area Form 'Bio' inside profile */
 textarea.form-control {
   border-color: var(--primary-color);
 }
 
+/* Definitions - Text Area Form 'Bio' animation inside profile */
 textarea.form-control:focus {
   box-shadow: 0 0 0 0.25rem rgba(106, 5, 114, 0.25);
   border-color: var(--primary-color);
 }
 
-/* Estilos responsivos */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .profile-container {
     padding: 20px;
   }
 
+/* Definitions - Picture container - responsive styles */
   .profile-picture-container {
     margin-bottom: 30px;
   }
 
+/* Definitions - Text inside profile - responsive styles */
   .text-center.md-4 {
     margin-bottom: 20px;
   }

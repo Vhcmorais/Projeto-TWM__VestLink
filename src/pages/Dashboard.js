@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar, Tab, Button, Spinner, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { FaSignOutAlt } from 'react-icons/fa'; // Importa o ícone de logout
+import { FaSignOutAlt } from 'react-icons/fa';
 import SocialFeed from '../components/SocialFeed';
 import FavoritedPosts from '../components/FavoritedPosts';
-import Profile from '../components/Profile'; // Importar o novo componente Profile
+import Profile from '../components/Profile';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const [key, setKey] = useState('home');
-  const [currentUserId, setCurrentUserId] = useState(null); // Estado para armazenar o userId
-  const [currentUserName, setCurrentUserName] = useState(null); // Estado para armazenar o userName
+  const [currentUserId, setCurrentUserId] = useState(null); 
+  const [currentUserName, setCurrentUserName] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Carregar userId e userName do localStorage ao montar o componente
     const storedUserId = localStorage.getItem('userId');
     const storedUserName = localStorage.getItem('userName');
     if (storedUserId) {
@@ -26,8 +25,8 @@ const Dashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('userId'); // Remover userId do localStorage
-    localStorage.removeItem('userName'); // Remover userName do localStorage
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
     navigate("/");
   };
 
@@ -52,22 +51,22 @@ const Dashboard = () => {
           <Nav.Link eventKey="home">Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="social-feed">Rede Social</Nav.Link>
+          <Nav.Link eventKey="social-feed">Materiais</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="profile">Perfil</Nav.Link> {/* Novo item de navegação para o perfil */}
+          <Nav.Link eventKey="profile">Meu Perfil</Nav.Link>
         </Nav.Item>
       </Nav>
 
       <Tab.Content>
         <Tab.Pane eventKey="home" active={key === 'home'}>
-          <p>Conteúdo da Home. Aqui você verá seus principais resumos e agenda.</p>
+          <p>Conteúdo da sua home. Aqui você verá seus principais resumos e agenda.</p>
           <FavoritedPosts userId={currentUserId} />
         </Tab.Pane>
         <Tab.Pane eventKey="social-feed" active={key === 'social-feed'}>
           <SocialFeed userId={currentUserId} />
         </Tab.Pane>
-        <Tab.Pane eventKey="profile" active={key === 'profile'}> {/* Novo Tab.Pane para o perfil */}
+        <Tab.Pane eventKey="profile" active={key === 'profile'}>
           <Profile userId={currentUserId} userName={currentUserName} />
         </Tab.Pane>
       </Tab.Content>

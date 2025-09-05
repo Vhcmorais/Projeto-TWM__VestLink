@@ -82,10 +82,15 @@ function Login() {
   return (
     <Container fluid className="vh-100">
       <Row className="h-100">
+
         {/* Coluna esquerda */}
         <Col md={6} className="d-none d-md-flex flex-column justify-content-center align-items-center login-left">
           <div className="text-white text-start p-5">
-            <img src="/vestlink_logo.png" alt="VestLink Logo" className="login-logo mb-4" />
+            <img
+              src="/vestlink_logo.png"
+              alt="VestLink Logo"
+              className="login-logo mb-4"
+            />
             <blockquote className="login-quote">
               <p className="fs-5">
                 “A plataforma que transformou minha preparação para o ENEM.
