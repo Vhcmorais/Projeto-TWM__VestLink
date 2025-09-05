@@ -21,7 +21,9 @@ O projeto tem como principal objetivo o desenvolvimento de um sistema funcional,
 
 - **Frontend:** React, Vite, Bootstrap/React-Bootstrap, React Router DOM 💻
 - **Backend:** Node.js, Express 💻
-- **Banco de Dados:** PostgreSQL + Prisma ORM 🛢
+- **Banco de Dados:** PostgreSQL + SQLite 🛢
 - **Outras ferramentas:** Git, GitHub 🗂️
 
 ---
+
+## 
