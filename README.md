@@ -1,6 +1,6 @@
 # 📚 VestLink
 
-![VestLink Logo](./public/images/logo.png)
+![VestLink Logo](./public/images/vestlink_logo.png)
 
 O **VestLink** é um site desenvolvido como projeto final da disciplina **Tecnologias Web e Mobile**, da Universidade Federal de Uberlândia. O objetivo é criar uma plataforma para postagens de **resumos, materiais de estudo e interações** entre estudantes que se preparam para vestibulares e ENEM.
 
