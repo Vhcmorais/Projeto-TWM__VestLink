@@ -272,4 +272,6 @@ Seus esforços, ideias e dedicação tornaram este projeto possível.
 - [Bianca Marques](https://github.com/MaisUm)
 - [Gabriel Alves](https://github.com/Maisum)
 
-![Imagem de agradecimento](./demo/imagens/foto_readme.jpeg)
+<div align="center">
+  <img src="./demo/imagens/foto_readme.jpg" width="300" />
+</div>
