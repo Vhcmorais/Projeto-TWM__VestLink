@@ -165,12 +165,14 @@
   color: var(--light-text) !important;
 }
 
+/* Definitions - Material's card text */
 .social-feed-card .card-text {
   color: var(--medium-text);
   line-height: 1.6;
   margin-top: 15px;
 }
 
+/* Definitions - Material's 'ver material' button */
 .social-feed-card .btn-info {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
@@ -180,12 +182,14 @@
   border-radius: 8px;
 }
 
+/* Definitions - Material's 'ver material' button animation */
 .social-feed-card .btn-info:hover {
   background-color: darken(var(--accent-color), 10%);
   border-color: darken(var(--accent-color), 10%);
   transform: translateY(-2px);
 }
 
+/* Definitions - Material's dislike button */
 .social-feed-card .d-flex .btn.ms-2.btn-danger {
   background-color: #f44336;
   border-color: #f44336;
@@ -195,28 +199,33 @@
   transition: all 0.3s ease;
 }
 
+/* Definitions - Material's dislike button animation */
 .social-feed-card .d-flex .btn.ms-2.btn-danger:hover {
   background-color: #d32f2f;
   border-color: #d32f2f;
   transform: translateY(-2px);
 }
 
+/* Definitions - Material's form label */
 .social-feed-form .form-label {
   font-weight: 600;
   color: var(--dark-text);
 }
 
+/* Definitions - Material's form control */
 .social-feed-form .form-control {
   border-radius: 10px;
   border: 1px solid var(--border-color);
   padding: 12px 18px;
 }
 
+/* Definitions - Material's form animation */
 .social-feed-form .form-control:focus {
   border-color: var(--secondary-color);
   box-shadow: 0 0 0 0.25rem rgba(142, 45, 226, 0.25);
 }
 
+/* Definitions - Material's button */
 .social-feed-form .btn-primary {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
@@ -227,18 +236,21 @@
   transition: all 0.3s ease;
 }
 
+/* Definitions - Material's button animation */
 .social-feed-form .btn-primary:hover {
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
   transform: translateY(-2px);
 }
 
+/* Definition - Material's image */
 .post-cover-image {
-  max-height: 200px; /* Garante que a imagem de capa não seja muito alta */
+  max-height: 200px;
   object-fit: cover;
   width: 100%;
 }
 
+/* Definitions - Component post control */
 .post-controls {
   display: flex;
   justify-content: space-between;
@@ -247,11 +259,12 @@
   gap: 10px;
 }
 
+/* Definitions - Post's control button */
 .post-controls .btn {
   flex-shrink: 0;
 }
 
-/* Estilos para o nome do autor */
+/* Styles to Author's name*/
 .post-author {
   font-size: 0.9em;
   color: #6c757d;

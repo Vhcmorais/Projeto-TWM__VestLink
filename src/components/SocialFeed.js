@@ -1,9 +1,15 @@
+/* MATERIALS - FUNCTIONS */
+
+/* Importing necessaries libraries */
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Card, Spinner, Alert } from 'react-bootstrap';
 import { FaHeart, FaRegHeart, FaThumbsUp, FaThumbsDown } from 'react-icons/fa'; // Re-adicionado imports
-import './SocialFeed.css'; // Importar o CSS do SocialFeed
+import './SocialFeed.css';
 
-const SocialFeed = ({ userId }) => { // Receber userId como prop
+/* Defining functions to post materials */
+
+/* Hooks (useState) */
+const SocialFeed = ({ userId }) => {
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -12,14 +18,14 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const userId = 1; // Removido o placeholder - agora vem via prop
-
+  /* Hooks (useEffect) */
   useEffect(() => {
-    if (userId) { // Apenas busca posts se o userId estiver disponível
+    if (userId) {
       fetchPosts();
     }
-  }, [userId]); // Dependência do userId
+  }, [userId]);
 
+  /* Functions to search for posted material */
   const fetchPosts = async () => {
     setLoading(true);
     try {
@@ -44,6 +50,7 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
     setSelectedCoverImage(e.target.files[0]);
   };
 
+  /* Functions to post some material */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !selectedFile) {
@@ -109,6 +116,7 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
     }
   };
 
+  /* Functions to favorite a posted material */
   const handleFavorite = async (postId) => {
     if (!userId) {
       alert('Você precisa estar logado para favoritar um post.');
@@ -133,6 +141,7 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
     }
   };
 
+  /* Functions to rate a posted material */
   const handleRate = async (postId, type) => {
     if (!userId) {
       alert('Você precisa estar logado para avaliar um post.');
@@ -162,7 +171,8 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
       alert('Você precisa estar logado para remover um post.');
       return;
     }
-    // Adicionar verificação para garantir que apenas o autor pode deletar
+    
+    /* Function that allows just the author can delete its post */
     const postToDelete = posts.find(p => p.id === postId);
     if (postToDelete && postToDelete.userId !== userId) {
       alert('Você não tem permissão para remover este post.');
@@ -192,6 +202,7 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
     }
   };
 
+  /* Texts to the tab */
   return (
     <div className="social-feed-container">
       <h2>Compartilhe seu conhecimento!</h2>
@@ -250,6 +261,7 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
         </Card.Body>
       </Card>
 
+      {/* Space that presents the most current material posted */} 
       <h3>Posts Recentes</h3>
       {loading && <Spinner animation="border" />}
       {!loading && posts.length === 0 && <p>Nenhum post ainda. Seja o primeiro a compartilhar!</p>}
@@ -259,7 +271,7 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
             <Card.Img variant="top" src={`http://localhost:3001${post.coverImagePath}`} alt="Cover" className="post-cover-image" />
           )}
           <Card.Body>
-            {/* <span className="card-category-tag">Física</span> Tag de categoria */}
+
             <Card.Title>{post.title}</Card.Title>
             {post.description && <Card.Text className="card-description">{post.description}</Card.Text>}
             <p className="post-author">Por: {post.userName}</p> {/* Adicionado o nome do autor */}
@@ -271,7 +283,6 @@ const SocialFeed = ({ userId }) => { // Receber userId como prop
             <div className="d-flex justify-content-between align-items-center mt-3 post-interaction-buttons">
               <div>
                 <Button variant="outline-danger" size="sm" className="me-2" onClick={() => handleFavorite(post.id)}>
-                  {/* Futuramente, este ícone deve mudar com base se o usuário favoritou ou não */}
                   <FaRegHeart /> Favoritar
                 </Button>
                 <Button variant="outline-success" size="sm" className="me-1" onClick={() => handleRate(post.id, 1)}>
